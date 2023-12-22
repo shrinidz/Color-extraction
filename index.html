@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Color Extractor</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" id="file-input" accept="image/*">
+        <button type="button" onclick="uploadImage()">Upload</button>
+    </form>
+    <div id="result-container"></div>
+
+    <script>
+        function uploadImage() {
+            var formData = new FormData(document.getElementById("upload-form"));
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var resultContainer = document.getElementById("result-container");
+                resultContainer.innerHTML = "<h2>Top 10 Colors</h2>";
+
+                data.colors.forEach(color => {
+                    resultContainer.innerHTML += `<div style="background-color: ${color}"></div>`;
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#file-input {
+    margin-bottom: 10px;
+
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+}
+
+#result-container {
+    margin-top: 20px;
+
+}
+
+div {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+
+
